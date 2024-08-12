@@ -1,0 +1,31 @@
+
+on: 
+
+  push: 
+
+    branches: 
+
+      - main 
+
+    paths: 
+
+      - 'test.txt'  # Specify the path to the text file 
+
+jobs: 
+
+  read-file: 
+
+    runs-on: ubuntu-latest 
+    #build container # deployment container
+
+    steps: 
+
+      - name: trigeer automated test repo
+
+        uses: peter-evans/repository-dispatch@v3 
+        with:
+          token: ${{ secrets.repo_access_token }}
+          repository: umair-2707/ummi_controller
+          event-type: my-event
+
+    
